@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' type='text/css' href='chatbubble.css'>
+    <script src="jquery.js"></script>
+    <script src="data_generator.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  </head>
+<!-- streams.home is array of all tweets from all users
+
+-->
+
+  <body>
+    <script>
+
+      $(document).ready(function(){
+        // jquery gets the body element with $('body') and then it is assigned
+        // $body is just a naming convention to indicate the variable $body is a jQuery object
+        var $body = $('body');  //assigned or 'cashed', 
+
+        window.visitor = prompt("What's your chat name?");
+        //window.visitor = 'Aut';
+
+        var formatTweet = function(singleTweet) {
+          //right now let's just do timestamp
+          var time = tweet.created_at;
+        };
+
+        var displayTweet = function(tweet) {
+          var msgUser = '<p2> <a href="#" title="click for user&apos;s timeline">' + tweet.user + '</a> </p2> ';
+          var msgTime = ' <p2> &nbsp;' + tweet.created_at.toString().slice(15,24) + '  </p2><br>';
+          msgDisplay = '<li> '+ msgUser + msgTime + tweet.message + '</li>';
+          $('.messages').prepend(msgDisplay);
+        };
+
+        var newTweets = function() {
+          var index = streams.home.length -1;
+          var maxLoop = index - 10;
+          while(index >= maxLoop) {
+            var tweet = streams.home[index]; 
+            displayTweet(tweet);
+            index -= 1;
+          }
+        };
+
+        var refreshTweets = function() {
+          $('.messages').empty();
+          newTweets();
+        };
+
+        //setInterval(function(){doStuff();}, 3000);
+        newTweets();
+        setInterval(function(){
+          refreshTweets();
+        }, 5000);
+
+        $('.refresh').on('click', function() {
+          refreshTweets()
+        });
+
+
+        var displayTimeline = function(tweet){
+          console.log('in displayTimeline');
+          var msgTime = '<p2>' + tweet.created_at.toString().slice(15,24) + '  </p2><br>';
+          msgDisplay = '<li>' + msgTime + tweet.message + '</li>';
+          $('#user-messages').append(msgDisplay);
+        };
+
+        //function to get user history
+        var getUserTweets = function(username) {
+          usersTweets = streams.users[username];
+          console.log("In getUserTweets", usersTweets);
+
+          var index = usersTweets.length -1;
+          console.log('index', index);
+          while(index >= 0) {
+            var tweet = usersTweets[index]; 
+            console.log('tweet is',tweet);
+            displayTimeline(tweet);
+            index -= 1;
+          }
+        };
+
+      $(function() {
+        $( "#user-timeline" ).dialog({
+          autoOpen: false,
+          show: {
+            effect: "clip",
+            duration: 1000
+          },
+          hide: {
+            effect: "clip",
+            duration: 1000
+          },
+          height: 500,
+          width: 450
+        }); 
+ 
+        $( ".messages" ).on('click',"a",function() {
+          var username = $(this).text();
+          getUserTweets(username);
+          $('.ui-dialog-title').text(username);
+          $( "#user-timeline" ).dialog('open');
+        });  
+      }); 
+
+       $(document).tooltip();
+
+      var processInput = function() {
+        var input = $('.draft').val();
+        writeTweet(input);
+        $('.draft').val("");
+      }
+
+      var processEnter = function(){
+        var input = $('.draft').val();
+        enterKeyVal = 13;
+        if (event.which == enterKeyVal) {
+          writeTweet(input);
+          $('.draft').val("");
+        }
+      }
+
+      $('.send').on('click',processInput);
+      $('.draft').keypress(processEnter);
+
+    }); 
+    </script>
+
+    <div id='maincontainer'>
+      <h2>   Chat Bubble  </h2>
+      <input class='draft' type='text' value='Tell me something!'>
+      <br>
+      <br>
+      <button class='send'>send</button>
+      <br>
+      <div id='color-container'>
+        <div id='msgcontainer'>
+          <ul class='messages'>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <br>
+      <button class='refresh'>refresh</button>
+      <br>
+    </div>
+
+    <div id="user-timeline">
+      <ul id="user-messages">
+      </ul>       
+    </div>
+  </body>
+</html>

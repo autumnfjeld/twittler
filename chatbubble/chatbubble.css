@@ -1,0 +1,135 @@
+
+body {
+  background: #9298AD ;
+	font-family: Modern, "Trebuchet MS", Arial, sans-serif;
+	text-align: center;
+}
+
+h2 {
+  color: #907FF0;
+}
+
+#maincontainer {
+  background-color: #15377D;
+  overflow: hidden;
+  height: 800px;
+  width: 800px;
+  margin:0 auto;
+  border-radius: 400px;
+  -webkit-border-radius: 400px; 
+  -moz-border-radius: 400px;
+  -o-border-radius: 400px;
+}
+
+#color-container {
+  background-color: #405DBD;
+  height: 460px;
+  width: 800px;
+  margin-top: 20px;
+}
+
+#msgcontainer {
+  height: 400px;
+  width: 550px;
+  padding-bottom: 5%;
+  margin: 0 auto;
+  margin-top: 5px auto;
+  margin-bottom: 5px auto;
+  padding-right: 44px;   /* using this padding to force li center */
+  overflow: scroll;
+}
+
+#user-timeline {
+  text-align: center;
+  /*vertical-align: center;
+  overflow: hidden; */
+  overflow: scroll;
+}
+
+.ui-dialog {
+  background-color: #5847BA ;
+  border: 5px solid #15377D;
+   -webkit-border-radius: 100px 100px 100px 100px; 
+  padding: 5px;
+  padding-top: 25px;
+  padding-bottom: 28px;
+}
+
+.ui-dialog-titlebar-close {
+  width: 50px;
+  padding:4px;
+  margin: 5px;
+  background-color: #B0A5D6;  
+  border: none;
+  border-radius:10px;
+} 
+
+.ui-tooltip {
+    background-color: #5847BA ;
+    display: inline-block;
+    color: #A3A7E3;
+    padding:8px;
+    -webkit-border-radius: 10px; 
+}
+
+
+p2 {
+  font-size: 10px;
+  color: #86A2CF;
+  text-transform:uppercase;
+}
+
+.draft {
+	width: 280px;
+  height: 40px;
+  padding:4px;
+  margin: 2px;
+  text-align: center;
+  background-color: #C8CBFA;  
+  color:#15377D;
+  border: 5px solid #5847BA;
+	border-radius:50px;
+  font-size: 16px;
+}
+
+button {
+  width: 200px;
+  padding:4px;
+  margin: 5px;
+  background-color: #B0A5D6;  
+  border: 2px solid #5847BA;
+	border-radius:20px;
+  color:#15377D;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color:#6892FC;
+}
+
+.js-action {
+
+}
+.js-action:hover {
+  background-color: #336ECC;
+  text-decoration:underline;
+  cursor: pointer; 
+}
+
+ul {
+  color:#C8CBFA;
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+ul li {
+}
+
+#intro {
+  font-size: 8;
+}
+
+footer {
+  font-size: 10pt;
+}
