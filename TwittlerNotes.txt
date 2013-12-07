@@ -1,0 +1,15 @@
+Twittler Notes
+
+Basics:
+- get array of messages via streams.home
+	- not sure what dictates number of messages passed in each call/reference
+
+Tasks:
+Show new tweets
+- initial disply of x tweets
+	- format, put in list
+	- make name & time small w/ different font
+- call streams.home again
+	- probably make a button for this and do an autoreferesh every 10-15 sec
+- check if time of any new tweets are newer than top of current display
+	- will use date objects and compare them
